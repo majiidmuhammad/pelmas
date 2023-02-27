@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\User;
 
-use Carbon\Carbon;
-use App\Models\Pengaduan;
-use App\Models\Masyarakat;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Masyarakat;
+use App\Models\Pengaduan;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -108,7 +107,6 @@ class UserController extends Controller
 
         $pengaduan = Pengaduan::create([
             'tgl_pengaduan' => date('Y-m-d h:i:s'),
-            // 'tgl_pengaduan' => Carbon::now()->format('d-m-Y H:i:s'),
             'nik' => Auth::guard('masyarakat')->user()->nik,
             'isi_laporan' => $data['isi_laporan'],
             'foto' => $data['foto'] ?? '',

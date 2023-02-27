@@ -14,10 +14,6 @@ use App\Http\Controllers\User\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 // Masyarakat
 Route::get('/', [UserController::class, 'index'])->name('pelmas.index');
 

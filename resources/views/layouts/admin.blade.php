@@ -10,11 +10,11 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-        
+
     @yield('css')
 
     <link rel="stylesheet" href="{{ asset('css/admin.css')}}">
-    
+
 </head>
 
 <body>
@@ -22,25 +22,25 @@
     <div class="wrapper">
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3 class="mb-0">PELMAS</h3>
+                <h3 class="text-white mb-0">PELMAS</h3>
                 <p class="text-white mb-0">Pelaporan Masyarakat</p>
             </div>
 
             <ul class="list-unstyled components">
-                <li class="">
-                    <a href="">Dashboard</a>
+                <li class="{{ Request::is('admin/dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('dashboard.index')}}">Dashboard</a>
                 </li>
-                <li class="">
-                    <a href="">Pengaduan</a>
+                <li class="{{ Request::is('admin/pengaduan') ? 'active' : '' }}">
+                    <a href="{{ route('pengaduan.index')}}">Pengaduan</a>
                 </li>
-                <li class="active">
-                    <a href="">Petugas</a>
+                <li class="{{ Request::is('admin/petugas') ? 'active' : '' }}">
+                    <a href="{{ route('petugas.index')}}">Petugas</a>
                 </li>
-                <li class="">
-                    <a href="">Masyarakat</a>
+                <li class="{{ Request::is('admin/masyarakat') ? 'active' : '' }}">
+                    <a href="{{ route('masyarakat.index')}}">Masyarakat</a>
                 </li>
-                <li class="">
-                    <a href="">Laporan</a>
+                <li class="{{ Request::is('admin/laporan') ? 'active' : '' }}">
+                    <a href="{{ route('laporan.index')}}">Laporan</a>
                 </li>
             </ul>
         </nav>

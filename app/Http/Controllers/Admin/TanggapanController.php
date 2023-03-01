@@ -12,9 +12,9 @@ class TanggapanController extends Controller
 {
     public function createOrUpdate(Request $request)
     {
-        $pengaduan = Pengaduan::where('id', $request->id)->first();
+        $pengaduan = Pengaduan::find($request->id);
         
-        $tanggapan = Tanggapan::where('id_tanggapan', $request->id_tanggapan)->first();
+        $tanggapan = Tanggapan::where('pengaduan_id', $request->id)->first();
         // dd($request);
         if ($tanggapan) 
         {

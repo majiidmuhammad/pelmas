@@ -18,6 +18,5 @@ class Tanggapan extends Model
         'tgl_tanggapan',
         'tanggapan',
         'petugas_id',
-        'status'
     ];
 }

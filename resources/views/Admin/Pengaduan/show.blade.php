@@ -91,9 +91,9 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form action="" method="post">
+                    <form action="{{ route('tanggapan.createOrUpdate') }}" method="post">
                         @csrf
-                        <input type="hidden" name="id" value="">
+                        <input type="hidden" name="id" value="{{ $pengaduan->id }}">
                         <div class="form-group">
                             <label for="status">Status</label>
                             <div class="input-group mb-3">

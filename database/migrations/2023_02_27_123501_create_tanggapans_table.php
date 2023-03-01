@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('tanggapan', function (Blueprint $table) {
             $table->id('id_tanggapan');
-            $table->foreignId('id_pengaduan')->constrained('pengaduan'); //relasi id pengaduan dari pengaduan
+            $table->foreignId('pengaduan_id')->constrained('pengaduan'); //relasi id pengaduan dari pengaduan
             $table->dateTime('tgl_tanggapan');
             $table->text('tanggapan');
-            $table->foreignId('id_petugas')->constrained('petugas'); //relasi id petugas dari petugas
+            $table->foreignId('petugas_id')->constrained('petugas'); //relasi id petugas dari petugas
             $table->timestamps();
 
         

@@ -58,12 +58,25 @@ class PetugasController extends Controller
 
     public function edit($id_petugas)
     {
-        return view('Admin.Petugas.edit');
+        $petugas = Petugas::where('id', $id_petugas)->first();
+        return view('Admin.Petugas.edit', ['petugas' => $petugas]);
     }
 
     public function update(Request $request, $id_petugas)
     {
-        # code...
+        $data = $request->all();
+
+        $petugas = Petugas::find($id_petugas);
+
+        $petugas->update([
+            'nama_petugas' => $data['nama_petugas'],
+            'username' => $data['username'],
+            'password' => Hash::make($data['password']),
+            'telp' => $data['telp'],
+            'level' => $data['level'],
+        ]);
+
+        return redirect()->route('petugas.index');
     }
 
     public function destroy($id_petugas)

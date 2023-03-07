@@ -81,7 +81,9 @@ class PetugasController extends Controller
 
     public function destroy($id_petugas)
     {
-        # code...
+        $petugas = Petugas::findOrfail($id_petugas);
+        $petugas->delete();
+        return redirect()->route('petugas.index');
     }
 
 

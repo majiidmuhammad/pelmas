@@ -67,5 +67,19 @@
                 </div>
             </div>
         </div>
+        <div class="col-lg-6 col-12">
+            @if(Session::has('username'))
+                <div class="alert alert-danger">
+                    {{ session::get('username') }}
+                </div>
+            @endif
+            @if($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            @endif
+        </div>
     </div>
 @endsection

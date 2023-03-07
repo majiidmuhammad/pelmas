@@ -69,6 +69,11 @@
                         </div>
                         <button type="submit" class="btn btn-warning text-white" style="width: 100%">UPDATE</button>
                     </form>
+                    <form action="{{ route('petugas.destroy', $petugas->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="sumbit" class="btn btn-danger" style="width: 100%">HAPUS</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layout.main')
 
 @section('title', 'Halaman Dashboard')
 

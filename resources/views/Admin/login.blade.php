@@ -1,50 +1,82 @@
-@extends('layouts.user')
+<!DOCTYPE html>
+<!--
+Template Name: Rubick - HTML Admin Dashboard Template
+Author: Left4code
+Website: http://www.left4code.com/
+Contact: muhammadrizki@left4code.com
+Purchase: https://themeforest.net/user/left4code/portfolio
+Renew Support: https://themeforest.net/user/left4code/portfolio
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<html lang="en" class="light">
+<!-- BEGIN: Head -->
 
-@section('css')
-<style>
-    body {
-        background: #6a70fc;
-    }
+<head>
+    <meta charset="utf-8">
+    <link href="dist/images/logo.svg" rel="shortcut icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Rubick admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
+    <meta name="keywords"
+        content="admin template, Rubick Admin Template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="LEFT4CODE">
+    <title>Login - PELMAS - Pelaporan Masyarakat</title>
+    <!-- BEGIN: CSS Assets-->
+    <link rel="stylesheet" href="dist/css/app.css" />
+    <!-- END: CSS Assets-->
+</head>
+<!-- END: Head -->
 
-    .btn-purple {
-        background: #6a70fc;
-        width: 100%;
-        color: #fff;
-    }
-
-</style>
-@endsection
-
-@section('title', 'Login Petugas')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-lg-5">
-            <h2 class="text-center text-white mb-0 mt-5">PELMAS</h2>
-            <P class="text-center text-white mb-5">Pelaporan Masyarakat</P>
-            <div class="card mt-5">
-                <div class="card-body">
-                    <h2 class="text-center mb-5">Login Petugas</h2>
-                    <form action="{{ route('admin.login') }}" method="POST">
-                        @csrf
-                        <div class="form-group">
-                            <input type="text" name="username" placeholder="Username" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name="password" placeholder="Password" class="form-control">
-                        </div>
-                        <button type="submit" class="btn btn-purple">Masuk</button>
-                    </form>
+<body class="login">
+    <div class="container sm:px-10">
+        <div class="block xl:grid grid-cols-2 gap-4">
+            <!-- BEGIN: Login Info -->
+            <div class="hidden xl:flex flex-col min-h-screen">
+                <a href="" class="-intro-x flex items-center pt-5">
+                    <img alt="Rubick Tailwind HTML Admin Template" class="w-6" src="dist/images/logo.svg">
+                    <span class="text-white text-lg ml-3"> PELMAS </span>
+                </a>
+                <div class="my-auto">
+                    <img alt="Rubick Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16"
+                        src="dist/images/illustration.svg">
+                    <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
+                        PELAPORAN MASYARAKAT
+                        <br>
+                        SIAP MENERIMA PENGADUAN
+                    </div>
                 </div>
             </div>
-            @if (Session::has('pesan'))
-            <div class="alert alert-danger mt-2">
-                {{ Session::get('pesan') }}
+            <!-- END: Login Info -->
+            <!-- BEGIN: Login Form -->
+            <div class="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0">
+                <div
+                    class="my-auto mx-auto xl:ml-20 bg-white dark:bg-darkmode-600 xl:bg-transparent px-5 sm:px-8 py-8 xl:p-0 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
+                    <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">
+                        Sign In
+                    </h2>
+                    <form action="{{ route('admin.login') }}" method="POST">
+                        @csrf
+                        <div class="intro-x mt-8">
+                            <input type="text" name="username" class="intro-x login__input form-control py-3 px-4 block"
+                                placeholder="Username">
+                            <input type="password" name="password" class="intro-x login__input form-control py-3 px-4 block mt-4"
+                                placeholder="Password">
+                        </div>
+                        <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
+                            <button type="submit" class="btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Login</button>
+                        </div>
+                    </form>
+
+                </div>
             </div>
-            @endif
-            <a href="{{ route('pelmas.index') }}" class="btn btn-warning text-white mt-3" style="width: 100%">Kembali ke Halaman Utama</a>
+            <!-- END: Login Form -->
         </div>
     </div>
-</div>
-@endsection
+    <!-- END: Dark Mode Switcher-->
+
+    <!-- BEGIN: JS Assets-->
+    <script src="dist/js/app.js"></script>
+    <!-- END: JS Assets-->
+</body>
+
+</html>

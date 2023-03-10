@@ -7,48 +7,39 @@
 @section('header', 'Data Petugas')
 
 @section('content')
-<div class="row">
-    <div class="col-12">
-        <a href="{{ route('petugas.create') }}" class="btn btn-purple">Tambah</a>
-        <div class="card mb-4">
-            <div class="card-header pb-0">
-                <h6>Projects table</h6>
-            </div>
-            <div class="card-body px-0 pt-0 pb-2">
-                <div class="table-responsive p-0">
-                    <table class="table align-items-center justify-content-center mb-0" id="petugasTable">
-                        <thead>
-                            <tr class="text-center">
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No
-                                </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                    Nama Petugas    </th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                    Username</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                    Telp</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                    Level</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                    Detail</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach( $petugas as $k => $v )
-                                <tr class="text-sm font-weight-bold mb-0 text-center">
-                                    <td>{{$k += 1}}</td>
-                                    <td>{{$v->nama_petugas}}</td>
-                                    <td>{{$v->username}}</td>
-                                    <td>{{$v->telp}}</td>
-                                    <td>{{$v->level}}</td>
-                                    <td><a href="{{ route('petugas.edit', $v->id) }}" style="text-decoration: underline">Lihat</a></td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="intro-y col-span-12 overflow-auto lg:overflow-visible text-right">
+    <a href="{{ route('petugas.create') }}" class="btn btn-success w-24 inline-block mr-1 mb-6 mt-6"><i data-feather="user-plus" class="block mx-auto"></i>Tambah</a>
+    <table class="table table-report -mt-2" id="pengaduanTable">
+        <thead>
+            <tr>
+                <th class="text-center whitespace-nowrap">NO</th>
+                <th class="text-center whitespace-nowrap">NAMA PETUGAS</th>
+                <th class="text-center whitespace-nowrap">USERNAME</th>
+                <th class="text-center whitespace-nowrap">TELP</th>
+                <th class="text-center whitespace-nowrap">LEVEL</th>
+                <th class="text-center whitespace-nowrap">DETAIL</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach( $petugas as $k => $v )
+                <tr class="intro-x">
+                    <td class="text-center">{{ $k += 1 }}</td>
+                    <td class="text-center">
+                        <p class="font-medium whitespace-nowrap">{{ $v->nama_petugas }}</p>
+                    </td>
+                    <td class="text-center">{{ $v->username }}</td>
+                    <td class="text-center">{{ $v->telp }}</td>
+                    <td class="text-center">{{ $v->level }}</td>
+                    <td class="table-report__action w-56">
+                        <div class="flex justify-center items-center">
+                            <a class="flex items-center mr-3"
+                                href="{{ route('petugas.edit', $v->id) }}"> <i
+                                    data-feather="check-square" class="w-4 h-4 mr-1"></i> LIHAT </a>
+                        </div>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
 @endsection

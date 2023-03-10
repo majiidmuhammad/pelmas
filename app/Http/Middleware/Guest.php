@@ -18,9 +18,9 @@ class Guest
     {
         if (Auth::guard('admin')->check()){
 
-            return $next($request);
+            return redirect()->route('dashboard.index');
         }
-
-        return redirect()->route('dashboard.index');
+        
+        return $next($request);
     }
 }

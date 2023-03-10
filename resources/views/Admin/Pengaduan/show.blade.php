@@ -2,132 +2,64 @@
 
 @section('title', 'Detail Pengaduan')
 
-@section('css')
-    <style>
-        .text-primary:hover {
-            text-decoration: underline;
-        }
-
-        .text-grey{
-            color: #6c757d;
-            
-        }
-
-        .text-grey:hover{
-            color: #6c757d;
-
-        }
-
-        .btn-purple{
-            background: #6a70fc;
-            border: #6a70fc;
-            color: #ffffff;
-            width: 100%;
-        }
-    </style>
-@endsection
-
 @section('header')
-    <a href="{{ route('pengaduan.index') }}" class="text-primary">Data Pengaduan</a>
-    <a href="#" class="text-grey"></a>
-    <a href="#" class="text-frey">Detail Pengaduan</a>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('pengaduan.index') }}">Data Pengaduan</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="#" class="text-frey">Detail Pengaduan</a></li>
+</ol>
+
+
+<a href="#" class="text-grey"></a>
 @endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-header">
-                    <div class="text-center">
-                        Pengaduan Masyarakat
-                    </div>
-                </div>
-                <div class="card-body">
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <th>Nik</th>
-                                <td>:</td>
-                                <td>{{$pengaduan->nik}}</td>
-                            </tr>
-                            <tr>
-                                <th>Tanggal Pengaduan</th>
-                                <td>:</td>
-                                <td>{{$pengaduan->tgl_pengaduan}}</td>
-                            </tr>
-                            <tr>
-                                <th>Foto</th>
-                                <td>:</td>
-                                <td><img src="{{ Storage::url($pengaduan->foto) }}" alt="Foto Pengaduan" class="embed-responsive"></td>
-                            </tr>
-                            <tr>
-                                <th>Isi Laporan</th>
-                                <td>:</td>
-                                <td>{{$pengaduan->isi_laporan}}</td>
-                            </tr>
-                            <tr>
-                                <th>Status</th>
-                                <td>:</td>
-                                <td>
-                                    @if ($pengaduan->status == '0')
-                                        <a href="#" class="badge badge-danger">Pending</a>
-                                    @elseif($pengaduan->status == 'proses')
-                                        <a href="#" class="badge badge-warning text-white">Proses</a>
-                                    @else
-                                        <a href="#" class="badge badge-success">Selesai</a>
-                                    @endif
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 col-12">
-            <div class="card">
-                <div class="card-header">
-                    <div class="text-center">
-                        Tanggapan Petugas
-                    </div>
-                </div>
-                <div class="card-body">
-                    <form action="{{ route('tanggapan.createOrUpdate') }}" method="post">
-                        @csrf
-                        <input type="hidden" name="id" value="{{ $pengaduan->id }}">
-                        <div class="form-group">
-                            <label for="status">Status</label>
-                            <div class="input-group mb-3">
-                                <select name="status" id="status" class="custom-select">
-                                    @if($pengaduan->status == '0')
-                                        <option selected value="0">Pending</option>
-                                        <option value="proses">Proses</option>
-                                        <option value="selesai">Selesai</option>
-                                    @elseif($pengaduan->status == 'proses')
-                                        <option value="0">Pending</option>
-                                        <option selected value="proses">Proses</option>
-                                        <option value="selesai">Selesai</option>
-                                    @else
-                                        <option value="0">Pending</option>
-                                        <option value="proses">Proses</option>
-                                        <option selected value="selesai">Selesai</option>
-                                    @endif
-                                    
-                                </select>
+<div class="intro-y box lg:mt-5">
+    <div class="flex items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
+        <h2 class="font-medium text-base mr-auto">
+            Pengaduan Masyarakat
+        </h2>
+    </div>
+    <div class="p-5">
+        <div class="flex flex-col-reverse xl:flex-row flex-col">
+            <div class="flex-1 mt-6 xl:mt-0">
+                <form action="{{ route('tanggapan.createOrUpdate') }}" method="post">
+                    @csrf
+                    <div class="grid grid-cols-12 gap-x-5">
+                        <div class="col-span-12 2xl:col-span-6">
+                            <input type="hidden" name="status" value="selesai">
+                            <input type="hidden" name="id" value="{{ $pengaduan->id }}">
+                            <div>
+                                <label for="update-profile-form-1" class="form-label">Nik</label>
+                                <input id="update-profile-form-1" type="text" class="form-control"
+                                    placeholder="Input text" disabled value="{{ $pengaduan->nik }}">
+                            </div>
+                            <div class="mt-3">
+                                <label for="update-profile-form-2" class="form-label">Tanggal Pegaduan</label>
+                                <input id="update-profile-form-1" type="text" class="form-control"
+                                    placeholder="Input text" disabled value="{{ $pengaduan->tgl_pengaduan }}">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="tanggapan">Tanggapan</label>
-                            <textarea name="tanggapan" id="tanggapan" rows="4" class="form-control" placeholder="Belum ada tanggapan">{{ $tanggapan->tanggapan ?? '' }}</textarea>
+                        
+                        <div class="col-span-12">
+                            <div class="mt-3">
+                                <label for="update-profile-form-5" class="form-label">Tanggapan</label>
+                                <textarea name="tanggapan" id="tanggapan" rows="4" class="form-control"
+                                    placeholder="Belum ada tanggapan">{{ $tanggapan->tanggapan ?? '' }}</textarea>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-purple">KIRIM</button>
-                    </form>
-                    @if (Session::has('status'))
-                        <div class="alert alert-success mt-2">
-                            {{  Session::get('status') }}
-                        </div>
-                    @endif
+                    </div>
+                    <button type="sumbit" class="btn btn-primary w-20 mt-3">Save</button>
+                </form>
+            </div>
+            <div class="w-52 mx-auto xl:mr-0 xl:ml-6">
+                <div
+                    class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
+                    <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
+                        <img class="rounded-md" alt="Foto Pengaduan" src="{{ Storage::url($pengaduan->foto) }}">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection

@@ -50,8 +50,8 @@
                                 data-target="#loginModal">Masuk</button>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('pelmas.formRegister') }}"
-                                class="btn btn-outline-purple">Daftar</a>
+                            <button class="btn btn-outline-purple" type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#regisModal">Daftar</button>
                         </li>
                     </ul>
                 @endauth
@@ -59,40 +59,33 @@
         </div>
     </nav>
     <!-- Masthead-->
-    <header class="masthead">
-        <div class="container px-4 px-lg-5 h-100">
-            <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-                <div class="col-lg-8 align-self-end">
-                    <h1 class="text-white font-weight-bold">Pengaduan Masyarakat itu sangat penting untuk kami</h1>
-                    <hr class="divider" />
-                </div>
-                <div class="col-lg-8 align-self-baseline">
-                    <p class="text-white-75 mb-5">mulai sekarang jika ada sesuatu di lingkungan atau sekitar kalian mari
-                        kita melapor agar semua permasalahan terselesaikan</p>
-                    <a class="btn btn-primary btn-xl" href="#laporan">Laporkan</a>
-                </div>
-            </div>
-        </div>
-    </header>
+
     <!-- Contact-->
     @yield('content')
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="regisModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <h3 class="mt-3">Masuk terlebih dahulu</h3>
-                    <p>Silahkan masuk menggunakan akun yang sudah didaftarkan.</p>
-                    <form action="{{ route('pelmas.login') }}" method="POST">
+                    <h3 class="mt-3">Daftar terlebih dahulu</h3>
+                    <p>Silahkan daftar menggunakan akun yang belum didaftarkan.</p>
+                    <form action="{{ route('pelmas.register') }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" name="username" id="username" class="form-control">
+                            <input type="number" name="nik" placeholder="NIK" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" name="password" id="password" class="form-control">
+                            <input type="text" name="nama" placeholder="Nama Lengkap" class="form-control">
                         </div>
-                        <button type="submit" class="btn btn-primary text-white mt-3" style="width: 100%">MASUK</button>
+                        <div class="form-group">
+                            <input type="text" name="username" placeholder="Username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" placeholder="Password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="telp" placeholder="No. Telp" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary text-white mt-3" style="width: 100%">REGISTER</button>
                     </form>
                     @if(Session::has('pesan'))
                         <div class="alert alert-danger mt-2">

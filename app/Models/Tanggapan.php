@@ -19,4 +19,13 @@ class Tanggapan extends Model
         'tanggapan',
         'petugas_id',
     ];
+
+    public function pengaduan()
+    {
+        return $this->belongsTo(Pengaduan::class);
+    }
+    public function petugas()
+    {
+        return $this->belongsTo(Pengaduan::class);
+    }
 }

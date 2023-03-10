@@ -54,6 +54,8 @@ Route::prefix('admin')->group(function () {
         
         // Laporan
         Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
+        Route::post('getLaporan', [LaporanController::class, 'getLaporan'])->name('laporan.getLaporan');
+        Route::get('laporan/cetak/{from}/{to}', [LaporanController::class, 'cetakLaporan'])->name('laporan.cetakLaporan');
         
     });
     
@@ -68,7 +70,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('pengaduan', PengaduanController::class);
         
         // Tanggapan
-        Route::post('tanggapan/createOrUpdate', [TanggapanController::class, 'createOrUpdate'])->name('tanggapan.createOrUpdate'); 
+        Route::POST('tanggapan/createOrUpdate', [TanggapanController::class, 'createOrUpdate'])->name('tanggapan.createOrUpdate'); 
         
         // Logout
         Route::get('/logout', [AdminController::class, 'logout'])->name('admin.logout');

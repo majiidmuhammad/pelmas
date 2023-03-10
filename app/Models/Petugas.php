@@ -18,4 +18,9 @@ class Petugas extends Authenticatable
         'telp',
         'level',
     ];
+
+    public function tanggapan()
+    {
+        return $this->hasMany(Tanggapan::class);
+    }
 }

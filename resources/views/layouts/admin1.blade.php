@@ -45,7 +45,7 @@
                     <a href="{{ route('petugas.index')}}">Petugas</a>
                 </li>
                 <li class="{{ Request::is('admin/masyarakat') ? 'active' : '' }}">
-                    <a href="{{ route('masyarakat.index')}}">Masyarakat</a>
+                    <a href="">Masyarakat</a>
                 </li>
                 <li class="{{ Request::is('admin/laporan') ? 'active' : '' }}">
                     <a href="{{ route('laporan.index')}}">Laporan</a>

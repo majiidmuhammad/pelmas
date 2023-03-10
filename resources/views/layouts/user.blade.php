@@ -27,7 +27,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
         <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="#page-top">PELMAS</a>
+            <a class="navbar-brand" href="{{ route('pelmas.index') }}">PELMAS</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -62,6 +62,33 @@
 
     <!-- Contact-->
     @yield('content')
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h3 class="mt-3">Masuk terlebih dahulu</h3>
+                    <p>Silahkan masuk menggunakan akun yang sudah didaftarkan.</p>
+                    <form action="{{ route('pelmas.login') }}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" id="username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary text-white mt-3" style="width: 100%">MASUK</button>
+                    </form>
+                    @if(Session::has('pesan'))
+                        <div class="alert alert-danger mt-2">
+                            {{ Session::get('pesan') }}
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" id="regisModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

@@ -25,7 +25,7 @@ class TanggapanController extends Controller
                 'tanggapan' => $request->tanggapan,
                 'petugas_id' => Auth::guard('admin')->user()->id,
             ]);
-
+            
             return redirect()->route('pengaduan.index', ['pengaduan' => $pengaduan, 'tanggapan' => $tanggapan]);
         } 
         else {

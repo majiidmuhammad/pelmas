@@ -39,7 +39,7 @@
                                     placeholder="Input text" disabled value="{{ $pengaduan->tgl_pengaduan }}">
                             </div>
                         </div>
-                        
+
                         <div class="col-span-12">
                             <div class="mt-3">
                                 <label for="update-profile-form-5" class="form-label">Tanggapan</label>
@@ -54,8 +54,9 @@
             <div class="w-52 mx-auto xl:mr-0 xl:ml-6">
                 <div
                     class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
-                    <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
-                        <img class="rounded-md" alt="Foto Pengaduan" src="{{ Storage::url($pengaduan->foto) }}">
+                    <div class="w-full h-64 my-5 image-fit">
+                        <img alt="Foto Pengaduan" src="{{ Storage::url($pengaduan->foto) }}"
+                            data-action="zoom" class="w-full rounded-md">
                     </div>
                 </div>
             </div>

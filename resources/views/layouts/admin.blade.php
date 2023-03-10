@@ -49,7 +49,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </a>
                         </li>
                         <li>
-                            <a href="side-menu-light-point-of-sale.html" class="side-menu">
+                            <a href="{{ route('masyarakat.index')}}" class="side-menu side-menu--{{ Request::is('admin/masyarakat') ? 'active' : '' }}">
                                 <div class="side-menu__icon"><i data-feather="users"></i></div>
                                 <div class="side-menu__title">Masyarakat</div>
                             </a>
@@ -63,7 +63,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     </li>
             
                     <li>
-                        <a href="side-menu-light-post.html" class="side-menu">
+                        <a href="{{ route('laporan.index')}}" class="side-menu side-menu--{{ Request::is('admin/laporan') ? 'active' : '' }}">
                             <div class="side-menu__icon"> <i data-feather="file-text"></i> </div>
                             <div class="side-menu__title"> Laporan </div>
                         </a>

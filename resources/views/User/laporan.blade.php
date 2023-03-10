@@ -88,13 +88,10 @@
                     <div>
                         @if($v->foto != null)
                             <img src="{{ Storage::url($v->foto) }}"
-                                alt="{{ 'Gambar '.$v->judul_laporan }}" class="gambar-lampiran" style="width: 200px; height: 200px;">
+                                alt="{{ 'Gambar '.$v->judul_laporan }}" class="gambar-lampiran mt-3 mb-3" style="width: 200px; height: 200px;">
                         @endif
                         @if($v->tanggapan != null)
-                            <p class="mt-3 mb-1">
-                                {{ '*Tanggapan dari '. $v->tanggapan->petugas->nama_petugas }}
-                            </p>
-                            <p class="light">{{ $v->tanggapan->tanggapan }}</p>
+                            <p class="black">Tanggapan : {{ $v->tanggapan->tanggapan }}</p>
                         @endif
                     </div>
                 </div>

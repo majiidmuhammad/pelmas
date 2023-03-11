@@ -65,21 +65,22 @@
             <hr class="col-12">
         </div>
         @foreach($pengaduan as $k => $v)
-            <div class="card mt-4">
-                <div class="card-header">
-                    {{ $v->user->nama }}
+        <div class="card mt-4">
+            <div class="card-header">
+                {{ $v->user->nama }}
                 </div>
                 <div class="card-body">
                     <div>
                         <h5 class="card-title">
                             @if($v->status == '0')
-                                <p class="text-danger">Pending</p>
+                            <p class="text-danger">Pending</p>
                             @elseif($v->status == 'proses')
-                                <p class="text-warning">{{ ucwords($v->status) }}</p>
+                            <p class="text-warning">{{ ucwords($v->status) }}</p>
                             @else
-                                <p class="text-success">{{ ucwords($v->status) }}</p>
+                            <p class="text-success">{{ ucwords($v->status) }}</p>
                             @endif
                         </h5>
+                        <h2 class="card-text">{{ $v->judul }}</h2>
                         <h5 class="card-title">
                             {{ $v->tgl_pengaduan }}
                         </h5>
@@ -87,11 +88,11 @@
                     </div>
                     <div>
                         @if($v->foto != null)
-                            <img src="{{ Storage::url($v->foto) }}"
+                        <img src="{{ Storage::url($v->foto) }}"
                                 alt="{{ 'Gambar '.$v->judul_laporan }}" class="gambar-lampiran mt-3 mb-3" style="width: 200px; height: 200px;">
                         @endif
                         @if($v->tanggapan != null)
-                            <p class="black">Tanggapan : {{ $v->tanggapan->tanggapan }}</p>
+                        <p class="black">Tanggapan : {{ $v->tanggapan->tanggapan }}</p>
                         @endif
                     </div>
                 </div>

@@ -7,7 +7,8 @@
     <table class="table table-report -mt-2" id="pengaduanTable">
         <thead>
             <tr>
-                <th class="text-center whitespace-nowrap">ISI LAPORAN</th>
+                <th class="text-center whitespace-nowrap">JUDUL</th>
+                <th class="text-center whitespace-nowrap">NAMA</th>
                 <th class="text-center whitespace-nowrap">TANGGAL</th>
                 <th class="text-center whitespace-nowrap">STATUS</th>
                 <th class="text-center whitespace-nowrap">DETAIL</th>
@@ -17,7 +18,10 @@
             @foreach( $pengaduan as $v )
                 <tr class="intro-x">
                     <td class="text-center">
-                        <p class="font-medium whitespace-nowrap">{{ $v->isi_laporan }}</p>
+                        <p class="font-medium whitespace-nowrap">{{ $v->judul }}</p>
+                    </td>
+                    <td class="text-center">
+                        <p class="font-medium whitespace-nowrap">{{ $v->user->nama }}</p>
                     </td>
                     <td class="text-center">{{ $v->tgl_pengaduan }}</td>
                     <td class="w-40">
@@ -35,9 +39,22 @@
                     </td>
                     <td class="table-report__action w-56">
                         <div class="flex justify-center items-center">
-                            <a class="flex items-center mr-3"
+                            @if($v->status=='0')
+                            <form action="{{ route('pengaduan.verifikasi', $v->id) }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="status" value="proses">
+                                <button type="submit">Verifikasi</button>
+                            </form>
+                            @elseif ($v->status=='proses')
+                                <a class="flex items-center mr-3"
                                 href="{{ route('pengaduan.show', $v->id) }}"> <i
                                     data-feather="check-square" class="w-4 h-4 mr-1"></i> Tanggapan </a>
+                            @else
+                            <a class="flex items-center mr-3"
+                            href="{{ route('pengaduan.detail', $v->id) }}"> <i
+                                data-feather="check-square" class="w-4 h-4 mr-1"></i> detail </a>
+                            
+                            @endif
                         </div>
                     </td>
                 </tr>

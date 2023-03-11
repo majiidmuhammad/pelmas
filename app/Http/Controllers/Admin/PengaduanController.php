@@ -24,4 +24,24 @@ class PengaduanController extends Controller
 
         return view('Admin.Pengaduan.show', ['pengaduan' => $pengaduan, 'tanggapan' => $tanggapan]);
     }
+
+    public function detail($id)
+    {
+        $pengaduan = Pengaduan::where('id', $id)->first();
+
+        $tanggapan = Tanggapan::where('pengaduan_id', $id)->first();
+
+        return view('Admin.Pengaduan.detail', ['pengaduan' => $pengaduan, 'tanggapan' => $tanggapan]);
+    }
+
+    public function verifikasi(Request $request, $id)
+    {
+        $pengaduan = Pengaduan::where('id', $id)->first();
+
+        $pengaduan->update($request->all());
+        $pengaduan->update();
+
+        $tanggapan = Tanggapan::where('pengaduan_id', $id)->first();
+        return redirect()->route('pengaduan.index');
+    }
 }

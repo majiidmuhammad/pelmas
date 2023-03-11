@@ -50,6 +50,12 @@
                     enctype="multipart/form-data">
                     @csrf
                     <div class="form-floating mb-3">
+                        <textarea class="form-control" name="judul" id="judul" type="text"
+                            data-sb-validations="required">{{ old('judul') }}</textarea>
+                        <label for="judul" name="judul">Judul</label>
+                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                    </div>
+                    <div class="form-floating mb-3">
                         <textarea class="form-control" name="isi_laporan" id="name" type="text"
                             data-sb-validations="required">{{ old('isi_laporan') }}</textarea>
                         <label for="name" name="isi_laporan">Isi Laporan</label>

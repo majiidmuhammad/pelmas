@@ -68,7 +68,10 @@ Route::prefix('admin')->group(function () {
         
         // Pengaduan
         Route::resource('pengaduan', PengaduanController::class);
+
+        Route::get('/pengaduan/detail/{id}', [PengaduanController::class, 'detail'])->name('pengaduan.detail');
         
+        Route::post('/pengaduan/{id}/verifikasi', [PengaduanController::class, 'verifikasi'])->name('pengaduan.verifikasi');
         // Tanggapan
         Route::POST('tanggapan/createOrUpdate', [TanggapanController::class, 'createOrUpdate'])->name('tanggapan.createOrUpdate'); 
         

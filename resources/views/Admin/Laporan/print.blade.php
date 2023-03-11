@@ -21,6 +21,7 @@
                     <th>TANGGAL</th>
                     <th>ISI LAPORAN</th>
                     <th>TANGGAPAN</th>
+                    <th>STATUS</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +31,7 @@
                         <td>{{ $v->tgl_pengaduan}}</td>
                         <td>{{ $v->isi_laporan }}</td>
                         <td>{{ $v->tanggapan->tanggapan }}</td>
+                        <td>{{ $v->status }}</td>
                         </td>
                     </tr>
                 @endforeach
